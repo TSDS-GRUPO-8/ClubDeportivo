@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClubDeportivo.Clases
+{
+    public class Cuota
+    {
+        public int IdCuota { get; set; }
+        public bool EstadoDelPago { get; set; }
+        public string FormaPago { get; set; } // Efectivo, Tarjeta, Debito
+        public DateTime FechaPago { get; set; }
+        public DateTime FechaVencimiento { get; set; }
+
+        public bool ValidarAcceso()
+        {
+            // Comprueba si el pago está realizado y si la fecha de vencimiento es válida
+            return EstadoDelPago && FechaVencimiento > DateTime.Now;
+        }
+    }
+}
