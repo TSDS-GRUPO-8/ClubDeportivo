@@ -9,15 +9,13 @@ namespace ClubDeportivo.Clases
     public class Socio : Persona
     {
         public int IdSocio { get; set; }
-        public bool FichaMedica { get; set; }
         public DateTime FechaInscripcion { get; set; }
         public int Carnet { get; set; }
-        public bool SocioActivo { get; set; }
 
         public override bool EstadoActividad()
         {
             // Lógica para comprobar si el socio está activo
-            return SocioActivo;
+            return Activo;
         }
 
         public void EntregarCarnet()

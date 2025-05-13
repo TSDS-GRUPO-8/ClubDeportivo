@@ -13,8 +13,10 @@ namespace ClubDeportivo.Clases
         public string DNI { get; set; }
         public string NroTelefono { get; set; }
         public string Direccion { get; set; }
+        public bool FichaMedica { get; set; }
+        public bool Activo { get; set; }
 
-        // Método abstracto para determinar el estado de la actividad
+        // Método abstracto para determinar si la persona esta Activa (cuota al dia o actividad activa)
         public abstract bool EstadoActividad();
     }
 }
