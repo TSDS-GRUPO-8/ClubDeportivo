@@ -14,6 +14,13 @@ namespace ClubDeportivo.Clases
         public DateTime FechaPago { get; set; }
         public DateTime FechaVencimiento { get; set; }
 
+        public Cuota(int idCuota, bool estadoDelPago, DateTime fechaPago, DateTime fechaVencimiento)
+        {
+            IdCuota = idCuota;
+            EstadoDelPago = estadoDelPago;
+            FechaPago = fechaPago;
+            FechaVencimiento = fechaVencimiento;
+        }
         public bool ValidarAcceso()
         {
             // Comprueba si el pago está realizado y si la fecha de vencimiento es válida

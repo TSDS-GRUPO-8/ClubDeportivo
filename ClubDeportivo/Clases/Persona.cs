@@ -10,7 +10,7 @@ namespace ClubDeportivo.Clases
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string DNI { get; set; }
+        public string Dni { get; set; }
         public string NroTelefono { get; set; }
         public string Direccion { get; set; }
         public bool FichaMedica { get; set; }

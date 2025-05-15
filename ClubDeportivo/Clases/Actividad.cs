@@ -8,6 +8,7 @@ namespace ClubDeportivo.Clases
 {
     public class Actividad
     {
+        private static int contadorActividades = 1;
         public int IdActividad { get; set; }
         public string Nombre { get; set; }
         public TimeSpan Horario { get; set; }
@@ -15,6 +16,16 @@ namespace ClubDeportivo.Clases
         public decimal Precio { get; set; }
         public DateTime DiaYHora { get; set; }
 
+
+        public Actividad(string nombre, TimeSpan horario, List<string> profesor, decimal precio, DateTime diaYHora)
+        {
+            IdActividad = IdActividad = contadorActividades++;
+            Nombre = nombre;
+            Horario = horario;
+            Profesor = profesor ?? new List<string>(); // Si no pasan lista, creamos una vacía
+            Precio = precio;
+            DiaYHora = diaYHora;
+        }
         public void ListarActividad()
         {
             // Lógica para listar actividades
