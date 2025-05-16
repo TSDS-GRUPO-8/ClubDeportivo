@@ -13,6 +13,13 @@ namespace ClubDeportivo.Clases
         public DateTime FechaPago { get; set; }
         public DateTime FechaVencimiento { get; set; }
 
+        public PagoActividad(int idPagoActividad, bool estadoDelPago, DateTime fechaPago, DateTime fechaVencimiento)
+        {
+            IdPagoActividad = idPagoActividad;
+            EstadoDelPago = estadoDelPago;
+            FechaPago = fechaPago;
+            FechaVencimiento = fechaVencimiento;
+        }
         public bool ValidarAcceso()
         {
             // Lógica para validar acceso a actividad

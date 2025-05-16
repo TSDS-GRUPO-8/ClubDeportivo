@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo
 {
-    partial class Form1
+    partial class FormRegistrarSocio
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,243 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnRegistrarSocio = new Button();
+            txtNombre = new TextBox();
+            lblNombre = new Label();
+            lblApellido = new Label();
+            txtApellido = new TextBox();
+            lblDNI = new Label();
+            txtDNI = new TextBox();
+            lblTelefono = new Label();
+            txtTelefono = new TextBox();
+            lblDireccion = new Label();
+            txtDireccion = new TextBox();
+            lblDNIPagar = new Label();
+            txtDNIPagar = new TextBox();
+            btnPagar = new Button();
+            chkFichaMedica = new CheckBox();
+            label1 = new Label();
+            lblMonto = new Label();
+            cmbFormaPago = new ComboBox();
+            nudMonto = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)nudMonto).BeginInit();
+            SuspendLayout();
+            // 
+            // btnRegistrarSocio
+            // 
+            btnRegistrarSocio.Location = new Point(53, 377);
+            btnRegistrarSocio.Name = "btnRegistrarSocio";
+            btnRegistrarSocio.Size = new Size(75, 23);
+            btnRegistrarSocio.TabIndex = 0;
+            btnRegistrarSocio.Text = "REGISTRAR";
+            btnRegistrarSocio.UseVisualStyleBackColor = true;
+            btnRegistrarSocio.Click += btnRegistrarSocio_Click;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(33, 41);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(100, 23);
+            txtNombre.TabIndex = 1;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(57, 23);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(51, 15);
+            lblNombre.TabIndex = 2;
+            lblNombre.Text = "Nombre";
+            lblNombre.Click += label1_Click;
+            // 
+            // lblApellido
+            // 
+            lblApellido.AutoSize = true;
+            lblApellido.Location = new Point(57, 87);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(51, 15);
+            lblApellido.TabIndex = 4;
+            lblApellido.Text = "Apellido";
+            // 
+            // txtApellido
+            // 
+            txtApellido.Location = new Point(35, 105);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(100, 23);
+            txtApellido.TabIndex = 3;
+            // 
+            // lblDNI
+            // 
+            lblDNI.AutoSize = true;
+            lblDNI.Location = new Point(71, 158);
+            lblDNI.Name = "lblDNI";
+            lblDNI.Size = new Size(27, 15);
+            lblDNI.TabIndex = 6;
+            lblDNI.Text = "DNI";
+            // 
+            // txtDNI
+            // 
+            txtDNI.Location = new Point(34, 176);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new Size(100, 23);
+            txtDNI.TabIndex = 5;
+            // 
+            // lblTelefono
+            // 
+            lblTelefono.AutoSize = true;
+            lblTelefono.Location = new Point(56, 234);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(52, 15);
+            lblTelefono.TabIndex = 8;
+            lblTelefono.Text = "Telefono";
+            // 
+            // txtTelefono
+            // 
+            txtTelefono.Location = new Point(33, 252);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(100, 23);
+            txtTelefono.TabIndex = 7;
+            // 
+            // lblDireccion
+            // 
+            lblDireccion.AutoSize = true;
+            lblDireccion.Location = new Point(53, 302);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(57, 15);
+            lblDireccion.TabIndex = 10;
+            lblDireccion.Text = "Direccion";
+            // 
+            // txtDireccion
+            // 
+            txtDireccion.Location = new Point(33, 320);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(100, 23);
+            txtDireccion.TabIndex = 9;
+            // 
+            // lblDNIPagar
+            // 
+            lblDNIPagar.AutoSize = true;
+            lblDNIPagar.Location = new Point(344, 108);
+            lblDNIPagar.Name = "lblDNIPagar";
+            lblDNIPagar.Size = new Size(27, 15);
+            lblDNIPagar.TabIndex = 11;
+            lblDNIPagar.Text = "DNI";
+            // 
+            // txtDNIPagar
+            // 
+            txtDNIPagar.Location = new Point(339, 126);
+            txtDNIPagar.Name = "txtDNIPagar";
+            txtDNIPagar.Size = new Size(100, 23);
+            txtDNIPagar.TabIndex = 12;
+            txtDNIPagar.TextChanged += txtDNIPagar_TextChanged;
+            // 
+            // btnPagar
+            // 
+            btnPagar.Location = new Point(432, 196);
+            btnPagar.Name = "btnPagar";
+            btnPagar.Size = new Size(75, 23);
+            btnPagar.TabIndex = 13;
+            btnPagar.Text = "PAGAR";
+            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Click += btnPagar_Click;
+            // 
+            // chkFichaMedica
+            // 
+            chkFichaMedica.AutoSize = true;
+            chkFichaMedica.Location = new Point(174, 45);
+            chkFichaMedica.Name = "chkFichaMedica";
+            chkFichaMedica.Size = new Size(107, 19);
+            chkFichaMedica.TabIndex = 14;
+            chkFichaMedica.Text = "FICHA MEDICA";
+            chkFichaMedica.UseVisualStyleBackColor = true;
+            chkFichaMedica.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(598, 105);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 15);
+            label1.TabIndex = 15;
+            label1.Text = "Medio de pago";
+            // 
+            // lblMonto
+            // 
+            lblMonto.AutoSize = true;
+            lblMonto.Location = new Point(473, 108);
+            lblMonto.Name = "lblMonto";
+            lblMonto.Size = new Size(50, 15);
+            lblMonto.TabIndex = 17;
+            lblMonto.Text = "MONTO";
+            lblMonto.Click += label2_Click;
+            // 
+            // cmbFormaPago
+            // 
+            cmbFormaPago.FormattingEnabled = true;
+            cmbFormaPago.Location = new Point(598, 123);
+            cmbFormaPago.Name = "cmbFormaPago";
+            cmbFormaPago.Size = new Size(121, 23);
+            cmbFormaPago.TabIndex = 18;
+            // 
+            // nudMonto
+            // 
+            nudMonto.Location = new Point(458, 127);
+            nudMonto.Name = "nudMonto";
+            nudMonto.Size = new Size(120, 23);
+            nudMonto.TabIndex = 19;
+            // 
+            // FormRegistrarSocio
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(nudMonto);
+            Controls.Add(cmbFormaPago);
+            Controls.Add(lblMonto);
+            Controls.Add(label1);
+            Controls.Add(chkFichaMedica);
+            Controls.Add(btnPagar);
+            Controls.Add(txtDNIPagar);
+            Controls.Add(lblDNIPagar);
+            Controls.Add(lblDireccion);
+            Controls.Add(txtDireccion);
+            Controls.Add(lblTelefono);
+            Controls.Add(txtTelefono);
+            Controls.Add(lblDNI);
+            Controls.Add(txtDNI);
+            Controls.Add(lblApellido);
+            Controls.Add(txtApellido);
+            Controls.Add(lblNombre);
+            Controls.Add(txtNombre);
+            Controls.Add(btnRegistrarSocio);
+            Name = "FormRegistrarSocio";
+            Text = "FormRegistrarSocio";
+            Load += FormRegistrarSocio_Load;
+            ((System.ComponentModel.ISupportInitialize)nudMonto).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button btnRegistrarSocio;
+        private TextBox txtNombre;
+        private Label lblNombre;
+        private Label lblApellido;
+        private TextBox txtApellido;
+        private Label lblDNI;
+        private TextBox txtDNI;
+        private Label lblTelefono;
+        private TextBox txtTelefono;
+        private Label lblDireccion;
+        private TextBox txtDireccion;
+        private Label lblDNIPagar;
+        private TextBox txtDNIPagar;
+        private Button btnPagar;
+        private CheckBox chkFichaMedica;
+        private Label label1;
+        private Label lblMonto;
+        private ComboBox cmbFormaPago;
+        private NumericUpDown nudMonto;
     }
 }

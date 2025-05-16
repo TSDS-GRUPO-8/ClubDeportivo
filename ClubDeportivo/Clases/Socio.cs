@@ -8,30 +8,29 @@ namespace ClubDeportivo.Clases
 {
     public class Socio : Persona
     {
+        // contadores ESTATICOS, todos los socios comparten el mismo contador
+        private static int contadorSocios = 1;
         public int IdSocio { get; set; }
-        public DateTime FechaInscripcion { get; set; }
-        public int Carnet { get; set; }
+        public bool Carnet { get; set; }
+        public DateTime FechaUltimoPago { get; set; }
 
-        public override bool EstadoActividad()
+        public Socio(DateTime fechaInscripcion,
+             string nombre, string apellido, string dni, string nroTelefono, string direccion)
         {
-            // Lógica para comprobar si el socio está activo
-            return Activo;
+            IdSocio = contadorSocios++;
+            FichaMedica = true;
+            FechaInscripcion = fechaInscripcion;
+            Carnet = true;
+            Activo = true;
+
+            Nombre = nombre;
+            Apellido = apellido;
+            Dni = dni;
+            Telefono = nroTelefono;
+            Direccion = direccion;
         }
 
-        public void EntregarCarnet()
-        {
-            // Lógica para entregar el carnet al socio
-        }
-
-        public void PagarCuota()
-        {
-            // Lógica para pagar la cuota
-        }
-
-        public void RegistrarSocio()
-        {
-            // Lógica para registrar un nuevo socio
-        }
+        public override bool EstadoActividad() => Activo;
 
         public bool Deuda()
         {
