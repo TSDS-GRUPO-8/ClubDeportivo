@@ -8,23 +8,24 @@ namespace ClubDeportivo.Clases
 {
     public class NoSocio : Persona
     {
+        // contador ESTATICO
+        private static int contadorNoSocios = 1;
 
         public int IdNoSocio { get; set; }
-        public DateTime FechaInscripcion { get; set; }
         public List <Actividad> Actividades { get; set; }
-        // contadores ESTATICOS, todos los socios comparten el mismo contador
-        private static int contadorNoSocios = 1;
-        public NoSocio(DateTime fechaInscripcion, string nombre, string apellido, string dni, string nroTelefono, string direccion)
+
+        public NoSocio(DateTime fechaInscripcion, string nombre, string apellido, string dni, string nroTelefono, string direccion, bool fichaMedica)
         {
             IdNoSocio = contadorNoSocios++;
             FechaInscripcion = fechaInscripcion;
             Actividades = new List<Actividad>(); // SIEMPRE arranca vacía
             Activo = false; // No está en ninguna actividad aún
+            FichaMedica = fichaMedica;
 
             Nombre = nombre;
             Apellido = apellido;
             Dni = dni;
-            NroTelefono = nroTelefono;
+            Telefono = nroTelefono;
             Direccion = direccion;
         }
         public override bool EstadoActividad()

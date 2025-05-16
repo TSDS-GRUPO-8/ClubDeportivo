@@ -11,7 +11,6 @@ namespace ClubDeportivo.Clases
         // contadores ESTATICOS, todos los socios comparten el mismo contador
         private static int contadorSocios = 1;
         public int IdSocio { get; set; }
-        public DateTime FechaInscripcion { get; set; }
         public bool Carnet { get; set; }
         public DateTime FechaUltimoPago { get; set; }
 
@@ -27,15 +26,12 @@ namespace ClubDeportivo.Clases
             Nombre = nombre;
             Apellido = apellido;
             Dni = dni;
-            NroTelefono = nroTelefono;
+            Telefono = nroTelefono;
             Direccion = direccion;
         }
 
         public override bool EstadoActividad() => Activo;
-        public void PagarCuota()
-        {
-            // Lógica para pagar la cuota
-        }
+
         public bool Deuda()
         {
             // Lógica para verificar si el socio tiene deudas

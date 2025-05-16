@@ -9,6 +9,7 @@ namespace ClubDeportivo.Clases
     public class Cuota
     {
         public int IdCuota { get; set; }
+        public int IdSocio { get; set; } // ID del socio al que pertenece la cuota
         public bool EstadoDelPago { get; set; }
         public string FormaPago { get; set; } // Efectivo, Tarjeta, Debito
         public DateTime FechaPago { get; set; }

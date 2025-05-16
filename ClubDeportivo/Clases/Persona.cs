@@ -11,8 +11,9 @@ namespace ClubDeportivo.Clases
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Dni { get; set; }
-        public string NroTelefono { get; set; }
+        public string Telefono { get; set; }
         public string Direccion { get; set; }
+        public DateTime FechaInscripcion { get; set; }
         public bool FichaMedica { get; set; }
         public bool Activo { get; set; }
 
