@@ -19,7 +19,7 @@ namespace ClubDeportivo.Clases
 
         public Actividad(string nombre, TimeSpan horario, List<string> profesor, decimal precio, DateTime diaYHora)
         {
-            IdActividad = IdActividad = contadorActividades++;
+            IdActividad = contadorActividades++;
             Nombre = nombre;
             Horario = horario;
             Profesor = profesor ?? new List<string>(); // Si no pasan lista, creamos una vacía
