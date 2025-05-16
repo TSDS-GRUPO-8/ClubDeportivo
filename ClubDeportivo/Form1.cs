@@ -7,6 +7,11 @@ namespace ClubDeportivo
         public FormRegistrarSocio()
         {
             InitializeComponent();
+            cmbFormaPago.Items.AddRange(new string[] { "Efectivo", "Tarjeta", "Débito" });
+            cmbFormaPago.SelectedIndex = 0;
+            nudMonto.Minimum = 1000;
+            nudMonto.Maximum = 100000;
+            nudMonto.Value = 30000; // Valor sugerido
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,6 +32,8 @@ namespace ClubDeportivo
         private void btnPagar_Click(object sender, EventArgs e)
         {
             string dni = txtDNIPagar.Text.Trim();
+            string formaPago = cmbFormaPago.SelectedItem.ToString();
+            decimal monto = nudMonto.Value;
 
             if (string.IsNullOrEmpty(dni))
             {
@@ -37,13 +44,21 @@ namespace ClubDeportivo
             try
             {
                 Sistema sistema = new Sistema();
-                string resultado = sistema.PagarCuota(dni);
+                string resultado = sistema.PagarCuota(dni, monto, formaPago);
                 MessageBox.Show(resultado);
+                LimpiarFormulario();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al procesar el pago: " + ex.Message);
             }
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtDNI.Clear();
+            cmbFormaPago.SelectedIndex = 0;
+            nudMonto.Value = 5000;
         }
 
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
@@ -83,7 +98,7 @@ namespace ClubDeportivo
                 sistema.RegistrarNoSocio(nuevoNoSocio);
 
                 MessageBox.Show("¡No Socio registrado correctamente!");
-                LimpiarFormulario();
+                LimpiarFormularioRegistro();
             }
             catch (Exception ex)
             {
@@ -91,7 +106,7 @@ namespace ClubDeportivo
             }
         }
 
-        private void LimpiarFormulario()
+        private void LimpiarFormularioRegistro()
         {
             txtNombre.Clear();
             txtApellido.Clear();
@@ -102,6 +117,11 @@ namespace ClubDeportivo
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

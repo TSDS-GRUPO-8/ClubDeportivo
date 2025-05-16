@@ -43,6 +43,11 @@
             txtDNIPagar = new TextBox();
             btnPagar = new Button();
             chkFichaMedica = new CheckBox();
+            label1 = new Label();
+            lblMonto = new Label();
+            cmbFormaPago = new ComboBox();
+            nudMonto = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)nudMonto).BeginInit();
             SuspendLayout();
             // 
             // btnRegistrarSocio
@@ -139,7 +144,7 @@
             // lblDNIPagar
             // 
             lblDNIPagar.AutoSize = true;
-            lblDNIPagar.Location = new Point(437, 114);
+            lblDNIPagar.Location = new Point(344, 108);
             lblDNIPagar.Name = "lblDNIPagar";
             lblDNIPagar.Size = new Size(27, 15);
             lblDNIPagar.TabIndex = 11;
@@ -147,7 +152,7 @@
             // 
             // txtDNIPagar
             // 
-            txtDNIPagar.Location = new Point(432, 149);
+            txtDNIPagar.Location = new Point(339, 126);
             txtDNIPagar.Name = "txtDNIPagar";
             txtDNIPagar.Size = new Size(100, 23);
             txtDNIPagar.TabIndex = 12;
@@ -174,11 +179,49 @@
             chkFichaMedica.UseVisualStyleBackColor = true;
             chkFichaMedica.CheckedChanged += checkBox1_CheckedChanged;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(598, 105);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 15);
+            label1.TabIndex = 15;
+            label1.Text = "Medio de pago";
+            // 
+            // lblMonto
+            // 
+            lblMonto.AutoSize = true;
+            lblMonto.Location = new Point(473, 108);
+            lblMonto.Name = "lblMonto";
+            lblMonto.Size = new Size(50, 15);
+            lblMonto.TabIndex = 17;
+            lblMonto.Text = "MONTO";
+            lblMonto.Click += label2_Click;
+            // 
+            // cmbFormaPago
+            // 
+            cmbFormaPago.FormattingEnabled = true;
+            cmbFormaPago.Location = new Point(598, 123);
+            cmbFormaPago.Name = "cmbFormaPago";
+            cmbFormaPago.Size = new Size(121, 23);
+            cmbFormaPago.TabIndex = 18;
+            // 
+            // nudMonto
+            // 
+            nudMonto.Location = new Point(458, 127);
+            nudMonto.Name = "nudMonto";
+            nudMonto.Size = new Size(120, 23);
+            nudMonto.TabIndex = 19;
+            // 
             // FormRegistrarSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(nudMonto);
+            Controls.Add(cmbFormaPago);
+            Controls.Add(lblMonto);
+            Controls.Add(label1);
             Controls.Add(chkFichaMedica);
             Controls.Add(btnPagar);
             Controls.Add(txtDNIPagar);
@@ -197,6 +240,7 @@
             Name = "FormRegistrarSocio";
             Text = "FormRegistrarSocio";
             Load += FormRegistrarSocio_Load;
+            ((System.ComponentModel.ISupportInitialize)nudMonto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -218,5 +262,9 @@
         private TextBox txtDNIPagar;
         private Button btnPagar;
         private CheckBox chkFichaMedica;
+        private Label label1;
+        private Label lblMonto;
+        private ComboBox cmbFormaPago;
+        private NumericUpDown nudMonto;
     }
 }
