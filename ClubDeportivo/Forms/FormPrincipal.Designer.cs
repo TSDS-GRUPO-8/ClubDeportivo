@@ -89,6 +89,7 @@
             // button5
             // 
             button5.BackColor = Color.White;
+            button5.Enabled = false;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatAppearance.MouseDownBackColor = Color.Navy;
             button5.FlatStyle = FlatStyle.Flat;
@@ -141,6 +142,7 @@
             // button3
             // 
             button3.BackColor = Color.White;
+            button3.Enabled = false;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatAppearance.MouseDownBackColor = Color.Navy;
             button3.FlatStyle = FlatStyle.Flat;
@@ -165,7 +167,7 @@
             button2.Name = "button2";
             button2.Size = new Size(215, 28);
             button2.TabIndex = 10;
-            button2.Text = "PAGO CUOTA";
+            button2.Text = "PAGOS";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 

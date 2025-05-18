@@ -42,7 +42,9 @@
             button3 = new Button();
             txtDatos = new TextBox();
             nudMonto = new NumericUpDown();
+            grpDatosPago = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)nudMonto).BeginInit();
+            grpDatosPago.SuspendLayout();
             SuspendLayout();
             // 
             // lblDatos
@@ -52,12 +54,12 @@
             lblDatos.Name = "lblDatos";
             lblDatos.Size = new Size(187, 37);
             lblDatos.TabIndex = 0;
-            lblDatos.Text = "DATOS USUARIO";
+            lblDatos.Text = "DATOS USUARIO:";
             // 
             // label3
             // 
             label3.Font = new Font("Segoe UI", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(29, 106);
+            label3.Location = new Point(29, 109);
             label3.Name = "label3";
             label3.Size = new Size(86, 23);
             label3.TabIndex = 2;
@@ -65,9 +67,9 @@
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(88, 106);
+            txtDNI.Location = new Point(88, 109);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(128, 23);
+            txtDNI.Size = new Size(168, 23);
             txtDNI.TabIndex = 3;
             txtDNI.TextChanged += txtDNI_TextChanged;
             // 
@@ -75,9 +77,9 @@
             // 
             cmbFormaPago.FormattingEnabled = true;
             cmbFormaPago.Items.AddRange(new object[] { "EFECTIVO", "TARJETA DEBITO", "TARJETA CREDITO", "TRANSFERENCIA" });
-            cmbFormaPago.Location = new Point(495, 105);
+            cmbFormaPago.Location = new Point(111, 107);
             cmbFormaPago.Name = "cmbFormaPago";
-            cmbFormaPago.Size = new Size(121, 23);
+            cmbFormaPago.Size = new Size(128, 23);
             cmbFormaPago.TabIndex = 7;
             cmbFormaPago.SelectedIndexChanged += cmbFormaPago_SelectedIndexChanged;
             // 
@@ -92,15 +94,15 @@
             // 
             // label7
             // 
-            label7.Location = new Point(439, 108);
+            label7.Location = new Point(13, 110);
             label7.Name = "label7";
-            label7.Size = new Size(50, 23);
+            label7.Size = new Size(92, 23);
             label7.TabIndex = 9;
-            label7.Text = "Forma :";
+            label7.Text = "Forma de pago:";
             // 
             // label8
             // 
-            label8.Location = new Point(236, 109);
+            label8.Location = new Point(55, 77);
             label8.Name = "label8";
             label8.Size = new Size(50, 23);
             label8.TabIndex = 11;
@@ -108,23 +110,24 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(391, 194);
+            dateTimePicker2.Location = new Point(111, 143);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(246, 23);
             dateTimePicker2.TabIndex = 13;
             // 
             // label9
             // 
-            label9.Location = new Point(292, 194);
+            label9.Location = new Point(12, 143);
             label9.Name = "label9";
             label9.Size = new Size(93, 23);
             label9.TabIndex = 14;
             label9.Text = "Fecha de Cobro :";
+            label9.Click += label9_Click;
             // 
             // btnLimpiar
             // 
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLimpiar.Location = new Point(360, 310);
+            btnLimpiar.Location = new Point(7, 193);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(129, 38);
             btnLimpiar.TabIndex = 15;
@@ -135,7 +138,7 @@
             // btnPagar
             // 
             btnPagar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPagar.Location = new Point(508, 310);
+            btnPagar.Location = new Point(155, 193);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(129, 38);
             btnPagar.TabIndex = 16;
@@ -158,6 +161,7 @@
             // 
             // txtDatos
             // 
+            txtDatos.Enabled = false;
             txtDatos.Location = new Point(29, 194);
             txtDatos.Multiline = true;
             txtDatos.Name = "txtDatos";
@@ -168,11 +172,28 @@
             // 
             // nudMonto
             // 
-            nudMonto.Location = new Point(292, 106);
+            nudMonto.Location = new Point(111, 75);
             nudMonto.Name = "nudMonto";
             nudMonto.Size = new Size(120, 23);
             nudMonto.TabIndex = 24;
             nudMonto.ValueChanged += nudMonto_ValueChanged;
+            // 
+            // grpDatosPago
+            // 
+            grpDatosPago.Controls.Add(label8);
+            grpDatosPago.Controls.Add(nudMonto);
+            grpDatosPago.Controls.Add(label7);
+            grpDatosPago.Controls.Add(btnPagar);
+            grpDatosPago.Controls.Add(cmbFormaPago);
+            grpDatosPago.Controls.Add(btnLimpiar);
+            grpDatosPago.Controls.Add(dateTimePicker2);
+            grpDatosPago.Controls.Add(label9);
+            grpDatosPago.Location = new Point(283, 72);
+            grpDatosPago.Name = "grpDatosPago";
+            grpDatosPago.Size = new Size(374, 272);
+            grpDatosPago.TabIndex = 25;
+            grpDatosPago.TabStop = false;
+            grpDatosPago.Text = "Datos Pago";
             // 
             // Pago
             // 
@@ -180,17 +201,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(700, 384);
-            Controls.Add(nudMonto);
+            Controls.Add(grpDatosPago);
             Controls.Add(txtDatos);
             Controls.Add(button3);
-            Controls.Add(btnPagar);
-            Controls.Add(btnLimpiar);
-            Controls.Add(label9);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(label8);
-            Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(cmbFormaPago);
             Controls.Add(txtDNI);
             Controls.Add(label3);
             Controls.Add(lblDatos);
@@ -199,6 +213,7 @@
             Text = "Pago";
             Load += Pago_Load;
             ((System.ComponentModel.ISupportInitialize)nudMonto).EndInit();
+            grpDatosPago.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,5 +234,6 @@
         private Button button3;
         private TextBox txtDatos;
         private NumericUpDown nudMonto;
+        private GroupBox grpDatosPago;
     }
 }

@@ -61,7 +61,7 @@ namespace ClubDeportivo
 
         private void Pago_Load(object sender, EventArgs e)
         {
-
+            grpDatosPago.Enabled = false; // Desactivar al inicio
         }
 
         private void LimpiarFormulario()
@@ -103,6 +103,9 @@ namespace ClubDeportivo
                         info.AppendLine($"👤 {reader["nombre"]} {reader["apellido"]}");
                         info.AppendLine($"📅 Inscripto: {Convert.ToDateTime(reader["fecha_inscripcion"]).ToShortDateString()}");
                         info.AppendLine($"📋 Ficha médica: {(Convert.ToBoolean(reader["ficha_medica"]) ? "Sí" : "No")}");
+                        grpDatosPago.Enabled = true; // Activar el grupo de datos de pago
+                        grpDatosPago.Text = "ALTA DE SOCIO";
+                        btnPagar.Text = "REGISTRAR SOCIO"; // Cambiar el texto del botón
                         txtDatos.Text = info.ToString();
                         return;
                     }
@@ -121,6 +124,9 @@ namespace ClubDeportivo
                         info.AppendLine($"👤 {reader["nombre"]} {reader["apellido"]}");
                         info.AppendLine($"📅 Alta: {Convert.ToDateTime(reader["fecha_inscripcion"]).ToShortDateString()}");
                         info.AppendLine($"📋 Ficha médica: {(Convert.ToBoolean(reader["ficha_medica"]) ? "Sí" : "No")}");
+                        grpDatosPago.Enabled = true; // Activar el grupo de datos de pago
+                        grpDatosPago.Text = "CUOTA MENSUAL";
+                        btnPagar.Text = "PAGAR CUOTA"; // Cambiar el texto del botón
                     }
                 }
 
@@ -158,6 +164,11 @@ namespace ClubDeportivo
         }
 
         private void txtDatos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }
