@@ -9,11 +9,17 @@ namespace ClubDeportivo.BBDD
 {
     public class ConexionMySQL
     {
-        private const string conexionBBDD = "server=localhost;database=club_deportivo;user=root;password=Passw0rd";
+        private static readonly string connectionString =
+            "Server=mysql-unknowteam.alwaysdata.net;" +
+            "Database=unknowteam_club_deportivo;" +
+            "User ID=413567;" +
+            "Password=administrador;" +
+            "Port=3306;" +
+            "SslMode=None;";
 
         public static MySqlConnection ObtenerConexion()
         {
-            MySqlConnection conexion = new MySqlConnection(conexionBBDD);
+            var conexion = new MySqlConnection(connectionString);
             conexion.Open();
             return conexion;
         }
