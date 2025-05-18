@@ -1,3 +1,5 @@
+using ClubDeportivo.Clases;
+
 namespace ClubDeportivo
 {
     public partial class FormPrincipal : Form
@@ -86,6 +88,11 @@ namespace ClubDeportivo
         private void panelAdmin_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbrirEnPanel(new ClubDeportivo.Forms.NoSocio());
         }
     }
 }

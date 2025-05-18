@@ -156,5 +156,10 @@ namespace ClubDeportivo
         {
             LimpiarFormulario();
         }
+
+        private void txtDatos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

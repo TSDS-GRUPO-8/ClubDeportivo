@@ -33,12 +33,10 @@
             lblDNI = new Label();
             lblTelefono = new Label();
             lblDireccion = new Label();
-            label6 = new Label();
             label7 = new Label();
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             chkFichaMedica = new CheckBox();
-            dateTimePicker1 = new DateTimePicker();
             txtDNI = new TextBox();
             txtTelefono = new TextBox();
             txtDireccion = new TextBox();
@@ -98,16 +96,6 @@
             lblDireccion.TabIndex = 4;
             lblDireccion.Text = "DIRECCION";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(383, 136);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(119, 15);
-            label6.TabIndex = 5;
-            label6.Text = "FECHA INSCRIPCION";
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -141,13 +129,6 @@
             chkFichaMedica.TabIndex = 9;
             chkFichaMedica.Text = "Entregado";
             chkFichaMedica.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(383, 172);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(246, 23);
-            dateTimePicker1.TabIndex = 10;
             // 
             // txtDNI
             // 
@@ -230,12 +211,10 @@
             Controls.Add(txtDireccion);
             Controls.Add(txtTelefono);
             Controls.Add(txtDNI);
-            Controls.Add(dateTimePicker1);
             Controls.Add(chkFichaMedica);
             Controls.Add(txtApellido);
             Controls.Add(txtNombre);
             Controls.Add(label7);
-            Controls.Add(label6);
             Controls.Add(lblDireccion);
             Controls.Add(lblTelefono);
             Controls.Add(lblDNI);
@@ -257,12 +236,10 @@
         private Label lblDNI;
         private Label lblTelefono;
         private Label lblDireccion;
-        private Label label6;
         private Label label7;
         private TextBox txtNombre;
         private TextBox txtApellido;
         private CheckBox chkFichaMedica;
-        private DateTimePicker dateTimePicker1;
         private TextBox txtDNI;
         private TextBox txtTelefono;
         private TextBox txtDireccion;

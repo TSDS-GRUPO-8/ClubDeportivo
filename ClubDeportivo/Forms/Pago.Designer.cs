@@ -164,6 +164,7 @@
             txtDatos.ReadOnly = true;
             txtDatos.Size = new Size(152, 105);
             txtDatos.TabIndex = 20;
+            txtDatos.TextChanged += txtDatos_TextChanged;
             // 
             // nudMonto
             // 

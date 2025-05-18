@@ -84,6 +84,7 @@
             button6.TabIndex = 15;
             button6.Text = "NO SOCIOS";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button5
             // 
@@ -285,7 +286,7 @@
             label2.Text = "CLUB DEPORTIVO";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -293,7 +294,7 @@
             Controls.Add(panelContainer);
             Controls.Add(panelNav);
             Margin = new Padding(2, 1, 2, 1);
-            Name = "Form1";
+            Name = "FormPrincipal";
             Text = "Form1";
             Load += Form1_Load;
             panelNav.ResumeLayout(false);
