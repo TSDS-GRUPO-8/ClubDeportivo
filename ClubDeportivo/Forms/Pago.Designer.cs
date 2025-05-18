@@ -48,7 +48,7 @@
             // lblDatos
             // 
             lblDatos.Font = new Font("Segoe UI", 13.875F);
-            lblDatos.Location = new Point(25, 154);
+            lblDatos.Location = new Point(29, 163);
             lblDatos.Name = "lblDatos";
             lblDatos.Size = new Size(187, 37);
             lblDatos.TabIndex = 0;
@@ -75,7 +75,7 @@
             // 
             cmbFormaPago.FormattingEnabled = true;
             cmbFormaPago.Items.AddRange(new object[] { "EFECTIVO", "TARJETA DEBITO", "TARJETA CREDITO", "TRANSFERENCIA" });
-            cmbFormaPago.Location = new Point(516, 106);
+            cmbFormaPago.Location = new Point(495, 105);
             cmbFormaPago.Name = "cmbFormaPago";
             cmbFormaPago.Size = new Size(121, 23);
             cmbFormaPago.TabIndex = 7;
@@ -92,7 +92,7 @@
             // 
             // label7
             // 
-            label7.Location = new Point(460, 109);
+            label7.Location = new Point(439, 108);
             label7.Name = "label7";
             label7.Size = new Size(50, 23);
             label7.TabIndex = 9;
@@ -100,7 +100,7 @@
             // 
             // label8
             // 
-            label8.Location = new Point(278, 109);
+            label8.Location = new Point(236, 109);
             label8.Name = "label8";
             label8.Size = new Size(50, 23);
             label8.TabIndex = 11;
@@ -108,14 +108,14 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(391, 163);
+            dateTimePicker2.Location = new Point(391, 194);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(246, 23);
             dateTimePicker2.TabIndex = 13;
             // 
             // label9
             // 
-            label9.Location = new Point(292, 163);
+            label9.Location = new Point(292, 194);
             label9.Name = "label9";
             label9.Size = new Size(93, 23);
             label9.TabIndex = 14;
@@ -162,13 +162,13 @@
             txtDatos.Multiline = true;
             txtDatos.Name = "txtDatos";
             txtDatos.ReadOnly = true;
-            txtDatos.Size = new Size(152, 105);
+            txtDatos.Size = new Size(227, 105);
             txtDatos.TabIndex = 20;
             txtDatos.TextChanged += txtDatos_TextChanged;
             // 
             // nudMonto
             // 
-            nudMonto.Location = new Point(334, 106);
+            nudMonto.Location = new Point(292, 106);
             nudMonto.Name = "nudMonto";
             nudMonto.Size = new Size(120, 23);
             nudMonto.TabIndex = 24;
