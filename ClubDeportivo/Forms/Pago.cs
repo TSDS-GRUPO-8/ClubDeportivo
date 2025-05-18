@@ -19,9 +19,9 @@ namespace ClubDeportivo
         {
             InitializeComponent();
             cmbFormaPago.SelectedIndex = 0;
-            nudMonto.Minimum = 1000;
+            nudMonto.Minimum = 10000;
             nudMonto.Maximum = 100000;
-            nudMonto.Value = 30000; // Valor sugerido
+            nudMonto.Value = 30000; // Valor Cuota Socio
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace ClubDeportivo
         {
             txtDNI.Clear();
             cmbFormaPago.SelectedIndex = 0;
-            nudMonto.Value = 5000;
+            nudMonto.Value = 30000;
             txtDatos.Text = string.Empty;
         }
 
@@ -99,13 +99,12 @@ namespace ClubDeportivo
                 {
                     if (reader.Read())
                     {
-                        info.AppendLine("🟡 NO SOCIO (pendiente de alta)");
+                        info.AppendLine("🟡 NO SOCIO");
                         info.AppendLine($"👤 {reader["nombre"]} {reader["apellido"]}");
                         info.AppendLine($"📅 Inscripto: {Convert.ToDateTime(reader["fecha_inscripcion"]).ToShortDateString()}");
                         info.AppendLine($"📋 Ficha médica: {(Convert.ToBoolean(reader["ficha_medica"]) ? "Sí" : "No")}");
                         grpDatosPago.Enabled = true; // Activar el grupo de datos de pago
                         grpDatosPago.Text = "ALTA DE SOCIO";
-                        btnPagar.Text = "REGISTRAR SOCIO"; // Cambiar el texto del botón
                         txtDatos.Text = info.ToString();
                         return;
                     }
@@ -126,7 +125,6 @@ namespace ClubDeportivo
                         info.AppendLine($"📋 Ficha médica: {(Convert.ToBoolean(reader["ficha_medica"]) ? "Sí" : "No")}");
                         grpDatosPago.Enabled = true; // Activar el grupo de datos de pago
                         grpDatosPago.Text = "CUOTA MENSUAL";
-                        btnPagar.Text = "PAGAR CUOTA"; // Cambiar el texto del botón
                     }
                 }
 

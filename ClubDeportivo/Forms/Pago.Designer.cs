@@ -90,7 +90,7 @@
             label6.Name = "label6";
             label6.Size = new Size(359, 41);
             label6.TabIndex = 8;
-            label6.Text = "NUEVO PAGO DE CUOTA";
+            label6.Text = "FORMULARIO DE PAGOS";
             // 
             // label7
             // 
@@ -106,7 +106,7 @@
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(50, 23);
             lblTotal.TabIndex = 11;
-            lblTotal.Text = "TOTAL:";
+            lblTotal.Text = "MONTO:";
             lblTotal.Click += lblTotal_Click;
             // 
             // dateTimePicker2
@@ -162,7 +162,6 @@
             // 
             // txtDatos
             // 
-            txtDatos.Enabled = false;
             txtDatos.Location = new Point(29, 194);
             txtDatos.Multiline = true;
             txtDatos.Name = "txtDatos";
@@ -212,7 +211,7 @@
             Controls.Add(lblDatos);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Pago";
-            Text = "Pago";
+            Text = "FORMULARIO DE PAGOS";
             Load += Pago_Load;
             ((System.ComponentModel.ISupportInitialize)nudMonto).EndInit();
             grpDatosPago.ResumeLayout(false);

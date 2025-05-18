@@ -49,60 +49,66 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblNombre.Location = new Point(22, 77);
             lblNombre.Margin = new Padding(2, 0, 2, 0);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(56, 15);
+            lblNombre.Size = new Size(58, 15);
             lblNombre.TabIndex = 0;
             lblNombre.Text = "NOMBRE";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
+            lblApellido.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblApellido.Location = new Point(149, 77);
             lblApellido.Margin = new Padding(2, 0, 2, 0);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(60, 15);
+            lblApellido.Size = new Size(62, 15);
             lblApellido.TabIndex = 1;
             lblApellido.Text = "APELLIDO";
             // 
             // lblDNI
             // 
             lblDNI.AutoSize = true;
+            lblDNI.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblDNI.Location = new Point(266, 77);
             lblDNI.Margin = new Padding(2, 0, 2, 0);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(27, 15);
+            lblDNI.Size = new Size(29, 15);
             lblDNI.TabIndex = 2;
             lblDNI.Text = "DNI";
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
+            lblTelefono.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTelefono.Location = new Point(383, 77);
             lblTelefono.Margin = new Padding(2, 0, 2, 0);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(64, 15);
+            lblTelefono.Size = new Size(65, 15);
             lblTelefono.TabIndex = 3;
             lblTelefono.Text = "TELEFONO";
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
+            lblDireccion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblDireccion.Location = new Point(504, 77);
             lblDireccion.Margin = new Padding(2, 0, 2, 0);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(68, 15);
+            lblDireccion.Size = new Size(70, 15);
             lblDireccion.TabIndex = 4;
             lblDireccion.Text = "DIRECCION";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(22, 143);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(22, 137);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(88, 15);
+            label7.Size = new Size(89, 15);
             label7.TabIndex = 6;
             label7.Text = "FICHA MEDICA";
             // 
@@ -123,7 +129,7 @@
             // chkFichaMedica
             // 
             chkFichaMedica.AutoSize = true;
-            chkFichaMedica.Location = new Point(22, 172);
+            chkFichaMedica.Location = new Point(22, 166);
             chkFichaMedica.Name = "chkFichaMedica";
             chkFichaMedica.Size = new Size(80, 19);
             chkFichaMedica.TabIndex = 9;
@@ -154,7 +160,8 @@
             // 
             // btnIngresar
             // 
-            btnIngresar.Location = new Point(323, 275);
+            btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnIngresar.Location = new Point(325, 207);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(126, 40);
             btnIngresar.TabIndex = 16;
@@ -164,7 +171,8 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(173, 275);
+            btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnLimpiar.Location = new Point(175, 207);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(120, 40);
             btnLimpiar.TabIndex = 17;
@@ -190,7 +198,7 @@
             button3.BackColor = Color.FromArgb(255, 128, 128);
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(647, 20);
+            button3.Location = new Point(614, -22);
             button3.Name = "button3";
             button3.Size = new Size(28, 28);
             button3.TabIndex = 19;
@@ -203,7 +211,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(700, 384);
+            ClientSize = new Size(635, 301);
             Controls.Add(button3);
             Controls.Add(label9);
             Controls.Add(btnLimpiar);

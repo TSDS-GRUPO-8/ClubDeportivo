@@ -30,6 +30,7 @@
         {
             dgvSocios = new DataGridView();
             button1 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvSocios).BeginInit();
             SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             dgvSocios.AllowUserToDeleteRows = false;
             dgvSocios.AllowUserToOrderColumns = true;
             dgvSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSocios.Location = new Point(26, 57);
+            dgvSocios.Location = new Point(26, 76);
             dgvSocios.Name = "dgvSocios";
             dgvSocios.ReadOnly = true;
             dgvSocios.Size = new Size(640, 262);
@@ -59,6 +60,16 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(26, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(102, 15);
+            label1.TabIndex = 2;
+            label1.Text = "LISTA DE SOCIOS";
+            // 
             // Socio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -66,6 +77,7 @@
             BackColor = SystemColors.ActiveCaption;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(700, 384);
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(dgvSocios);
             FormBorderStyle = FormBorderStyle.None;
@@ -74,11 +86,13 @@
             Load += Socio_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSocios).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dgvSocios;
         private Button button1;
+        private Label label1;
     }
 }
