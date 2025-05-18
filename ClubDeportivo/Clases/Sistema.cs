@@ -19,36 +19,48 @@ namespace ClubDeportivo.Clases
         {
             using (var con = ConexionMySQL.ObtenerConexion())
             {
-                // 1. Verificar si ya existe
-                string consulta = "SELECT COUNT(*) FROM no_socios WHERE dni = @dni";
-                var cmdVerificacion = new MySqlCommand(consulta, con);
-                cmdVerificacion.Parameters.AddWithValue("@dni", nuevoNoSocio.Dni);
-                long existe = (long)cmdVerificacion.ExecuteScalar();
+                // 1. Verificar si ya existe como SOCIO
+                string querySocio = "SELECT COUNT(*) FROM socios WHERE dni = @dni";
+                var cmdSocio = new MySqlCommand(querySocio, con);
+                cmdSocio.Parameters.AddWithValue("@dni", nuevoNoSocio.Dni);
+                long socioExiste = (long)cmdSocio.ExecuteScalar();
 
-                if (existe > 0)
+                if (socioExiste > 0)
                 {
-                    MessageBox.Show("Ya existe un NoSocio con ese DNI.");
+                    MessageBox.Show("Este DNI ya está registrado como SOCIO.");
                     return;
                 }
 
-                // 2. Insertar si no existe
-                string sql = @"INSERT INTO no_socios 
+                // 2. Verificar si ya existe como NO SOCIO
+                string queryNoSocio = "SELECT COUNT(*) FROM no_socios WHERE dni = @dni";
+                var cmdNoSocio = new MySqlCommand(queryNoSocio, con);
+                cmdNoSocio.Parameters.AddWithValue("@dni", nuevoNoSocio.Dni);
+                long noSocioExiste = (long)cmdNoSocio.ExecuteScalar();
+
+                if (noSocioExiste > 0)
+                {
+                    MessageBox.Show("Este DNI ya está registrado como NO SOCIO.");
+                    return;
+                }
+
+                // 3. Si no existe en ninguna tabla, se registra
+                string insert = @"INSERT INTO no_socios 
         (nombre, apellido, dni, telefono, direccion, fecha_inscripcion, activo, ficha_medica)
         VALUES (@nombre, @apellido, @dni, @telefono, @direccion, @fecha, @activo, @fichaMedica)";
 
-                var cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@nombre", nuevoNoSocio.Nombre);
-                cmd.Parameters.AddWithValue("@apellido", nuevoNoSocio.Apellido);
-                cmd.Parameters.AddWithValue("@dni", nuevoNoSocio.Dni);
-                cmd.Parameters.AddWithValue("@telefono", nuevoNoSocio.Telefono);
-                cmd.Parameters.AddWithValue("@direccion", nuevoNoSocio.Direccion);
-                cmd.Parameters.AddWithValue("@fecha", nuevoNoSocio.FechaInscripcion);
-                cmd.Parameters.AddWithValue("@activo", nuevoNoSocio.Activo);
-                cmd.Parameters.AddWithValue("@fichaMedica", nuevoNoSocio.FichaMedica);
+                var cmdInsert = new MySqlCommand(insert, con);
+                cmdInsert.Parameters.AddWithValue("@nombre", nuevoNoSocio.Nombre);
+                cmdInsert.Parameters.AddWithValue("@apellido", nuevoNoSocio.Apellido);
+                cmdInsert.Parameters.AddWithValue("@dni", nuevoNoSocio.Dni);
+                cmdInsert.Parameters.AddWithValue("@telefono", nuevoNoSocio.Telefono);
+                cmdInsert.Parameters.AddWithValue("@direccion", nuevoNoSocio.Direccion);
+                cmdInsert.Parameters.AddWithValue("@fecha", nuevoNoSocio.FechaInscripcion);
+                cmdInsert.Parameters.AddWithValue("@activo", nuevoNoSocio.Activo);
+                cmdInsert.Parameters.AddWithValue("@fichaMedica", nuevoNoSocio.FichaMedica);
 
-                cmd.ExecuteNonQuery();
+                cmdInsert.ExecuteNonQuery();
 
-                MessageBox.Show("¡No Socio registrado correctamente en la base de datos!");
+                MessageBox.Show("Usuario registrado correctamente.");
             }
         }
 
@@ -72,7 +84,7 @@ namespace ClubDeportivo.Clases
         {
             using (var con = ConexionMySQL.ObtenerConexion())
             {
-                // 1. Buscar en no_socios
+                // 1. Buscar en no_socios - en caso de existir se da el alta en socios
                 string queryNoSocio = "SELECT * FROM no_socios WHERE dni = @dni";
                 var cmdBuscarNoSocio = new MySqlCommand(queryNoSocio, con);
                 cmdBuscarNoSocio.Parameters.AddWithValue("@dni", dni);
@@ -113,7 +125,7 @@ namespace ClubDeportivo.Clases
                     }
                 }
 
-                // 2. Obtener idSocio desde la tabla socios
+                // 2. Buscar usuario en la tabla Socios - Obtener idSocio
                 string queryId = "SELECT idSocio FROM socios WHERE dni = @dni";
                 var cmdId = new MySqlCommand(queryId, con);
                 cmdId.Parameters.AddWithValue("@dni", dni);
@@ -125,17 +137,34 @@ namespace ClubDeportivo.Clases
                     DateTime fechaPago = DateTime.Now;
                     DateTime fechaVencimiento = fechaPago.AddMonths(1);
 
-                    string insertCuota = @"
-                INSERT INTO cuotas (idSocio, estadoDelPago, formaPago, fechaPago, fechaVencimiento, monto)
-                VALUES (@idSocio, 1, @formaPago, @fechaPago, @fechaVencimiento, @monto)";
+                    // Buscar última fecha de vencimiento si existen cuotas pagas
+                    string queryVenc = "SELECT MAX(fechaVencimiento) FROM cuotas WHERE idSocio = @idSocio";
+                    var cmdVenc = new MySqlCommand(queryVenc, con);
+                    cmdVenc.Parameters.AddWithValue("@idSocio", idSocio);
+                    object vencResult = cmdVenc.ExecuteScalar();
+
+                    if (vencResult != DBNull.Value && vencResult != null)
+                    {
+                        DateTime ultimaFechaVenc = Convert.ToDateTime(vencResult);
+                        if (ultimaFechaVenc > fechaPago)
+                        {
+                            fechaVencimiento = ultimaFechaVenc.AddMonths(1);
+                        }
+                    }
+
+                    // Insertar nueva cuota paga
+                    string insertCuota = @"INSERT INTO cuotas (idSocio, estadoDelPago, formaPago, fechaPago, fechaVencimiento, monto)
+                           VALUES (@idSocio, @estadoDelPago, @formaPago, @fechaPago, @fechaVencimiento, @monto)";
                     var cmdCuota = new MySqlCommand(insertCuota, con);
                     cmdCuota.Parameters.AddWithValue("@idSocio", idSocio);
+                    cmdCuota.Parameters.AddWithValue("@estadoDelPago", true);
                     cmdCuota.Parameters.AddWithValue("@formaPago", formaPago);
                     cmdCuota.Parameters.AddWithValue("@fechaPago", fechaPago);
                     cmdCuota.Parameters.AddWithValue("@fechaVencimiento", fechaVencimiento);
                     cmdCuota.Parameters.AddWithValue("@monto", monto);
 
                     cmdCuota.ExecuteNonQuery();
+
                     return "Cuota registrada correctamente.";
                 }
 

@@ -28,82 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            lblNombre = new Label();
+            lblApellido = new Label();
+            lblDNI = new Label();
+            lblTelefono = new Label();
+            lblDireccion = new Label();
             label6 = new Label();
             label7 = new Label();
             txtNombre = new TextBox();
             txtApellido = new TextBox();
-            checkBox1 = new CheckBox();
+            chkFichaMedica = new CheckBox();
             dateTimePicker1 = new DateTimePicker();
-            txtDni = new TextBox();
-            txtTel = new TextBox();
+            txtDNI = new TextBox();
+            txtTelefono = new TextBox();
             txtDireccion = new TextBox();
-            label8 = new Label();
-            checkBox2 = new CheckBox();
-            button1 = new Button();
-            button2 = new Button();
+            btnIngresar = new Button();
+            btnLimpiar = new Button();
             label9 = new Label();
             button3 = new Button();
             SuspendLayout();
             // 
-            // label1
+            // lblNombre
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 73);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 15);
-            label1.TabIndex = 0;
-            label1.Text = "NOMBRE";
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(22, 77);
+            lblNombre.Margin = new Padding(2, 0, 2, 0);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(56, 15);
+            lblNombre.TabIndex = 0;
+            lblNombre.Text = "NOMBRE";
             // 
-            // label2
+            // lblApellido
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(149, 73);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(60, 15);
-            label2.TabIndex = 1;
-            label2.Text = "APELLIDO";
+            lblApellido.AutoSize = true;
+            lblApellido.Location = new Point(149, 77);
+            lblApellido.Margin = new Padding(2, 0, 2, 0);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(60, 15);
+            lblApellido.TabIndex = 1;
+            lblApellido.Text = "APELLIDO";
             // 
-            // label3
+            // lblDNI
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(266, 73);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(27, 15);
-            label3.TabIndex = 2;
-            label3.Text = "DNI";
+            lblDNI.AutoSize = true;
+            lblDNI.Location = new Point(266, 77);
+            lblDNI.Margin = new Padding(2, 0, 2, 0);
+            lblDNI.Name = "lblDNI";
+            lblDNI.Size = new Size(27, 15);
+            lblDNI.TabIndex = 2;
+            lblDNI.Text = "DNI";
             // 
-            // label4
+            // lblTelefono
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(383, 73);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 15);
-            label4.TabIndex = 3;
-            label4.Text = "TELEFONO";
+            lblTelefono.AutoSize = true;
+            lblTelefono.Location = new Point(383, 77);
+            lblTelefono.Margin = new Padding(2, 0, 2, 0);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(64, 15);
+            lblTelefono.TabIndex = 3;
+            lblTelefono.Text = "TELEFONO";
             // 
-            // label5
+            // lblDireccion
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(504, 73);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 15);
-            label5.TabIndex = 4;
-            label5.Text = "DIRECCION";
+            lblDireccion.AutoSize = true;
+            lblDireccion.Location = new Point(504, 77);
+            lblDireccion.Margin = new Padding(2, 0, 2, 0);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(68, 15);
+            lblDireccion.TabIndex = 4;
+            lblDireccion.Text = "DIRECCION";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(22, 144);
+            label6.Location = new Point(383, 136);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(119, 15);
@@ -113,7 +111,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(22, 224);
+            label7.Location = new Point(22, 143);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(88, 15);
@@ -122,93 +120,76 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(22, 100);
+            txtNombre.Location = new Point(22, 95);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 7;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(149, 100);
+            txtApellido.Location = new Point(149, 95);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(100, 23);
             txtApellido.TabIndex = 8;
             // 
-            // checkBox1
+            // chkFichaMedica
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(22, 253);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(80, 19);
-            checkBox1.TabIndex = 9;
-            checkBox1.Text = "Entregado";
-            checkBox1.UseVisualStyleBackColor = true;
+            chkFichaMedica.AutoSize = true;
+            chkFichaMedica.Location = new Point(22, 172);
+            chkFichaMedica.Name = "chkFichaMedica";
+            chkFichaMedica.Size = new Size(80, 19);
+            chkFichaMedica.TabIndex = 9;
+            chkFichaMedica.Text = "Entregado";
+            chkFichaMedica.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(22, 180);
+            dateTimePicker1.Location = new Point(383, 172);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.Size = new Size(246, 23);
             dateTimePicker1.TabIndex = 10;
             // 
-            // txtDni
+            // txtDNI
             // 
-            txtDni.Location = new Point(266, 100);
-            txtDni.Name = "txtDni";
-            txtDni.Size = new Size(100, 23);
-            txtDni.TabIndex = 11;
+            txtDNI.Location = new Point(266, 95);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new Size(100, 23);
+            txtDNI.TabIndex = 11;
+            txtDNI.TextChanged += txtDNI_TextChanged;
             // 
-            // txtTel
+            // txtTelefono
             // 
-            txtTel.Location = new Point(383, 100);
-            txtTel.Name = "txtTel";
-            txtTel.Size = new Size(100, 23);
-            txtTel.TabIndex = 12;
+            txtTelefono.Location = new Point(383, 95);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(100, 23);
+            txtTelefono.TabIndex = 12;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(504, 100);
+            txtDireccion.Location = new Point(504, 95);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(100, 23);
             txtDireccion.TabIndex = 13;
             // 
-            // label8
+            // btnIngresar
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(149, 224);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(50, 15);
-            label8.TabIndex = 14;
-            label8.Text = "ESTADO";
+            btnIngresar.Location = new Point(323, 275);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(126, 40);
+            btnIngresar.TabIndex = 16;
+            btnIngresar.Text = "INGRESAR";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // checkBox2
+            // btnLimpiar
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(149, 253);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(60, 19);
-            checkBox2.TabIndex = 15;
-            checkBox2.Text = "Activo";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(478, 304);
-            button1.Name = "button1";
-            button1.Size = new Size(126, 40);
-            button1.TabIndex = 16;
-            button1.Text = "INGRESAR";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(328, 304);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 40);
-            button2.TabIndex = 17;
-            button2.Text = "LIMPIAR";
-            button2.UseVisualStyleBackColor = true;
+            btnLimpiar.Location = new Point(173, 275);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(120, 40);
+            btnLimpiar.TabIndex = 17;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // label9
             // 
@@ -244,52 +225,49 @@
             ClientSize = new Size(700, 384);
             Controls.Add(button3);
             Controls.Add(label9);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(checkBox2);
-            Controls.Add(label8);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnIngresar);
             Controls.Add(txtDireccion);
-            Controls.Add(txtTel);
-            Controls.Add(txtDni);
+            Controls.Add(txtTelefono);
+            Controls.Add(txtDNI);
             Controls.Add(dateTimePicker1);
-            Controls.Add(checkBox1);
+            Controls.Add(chkFichaMedica);
             Controls.Add(txtApellido);
             Controls.Add(txtNombre);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblDireccion);
+            Controls.Add(lblTelefono);
+            Controls.Add(lblDNI);
+            Controls.Add(lblApellido);
+            Controls.Add(lblNombre);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2, 1, 2, 1);
             Name = "Inscripcion";
             Text = "Inscripcion";
+            Load += Inscripcion_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label lblNombre;
+        private Label lblApellido;
+        private Label lblDNI;
+        private Label lblTelefono;
+        private Label lblDireccion;
         private Label label6;
         private Label label7;
         private TextBox txtNombre;
         private TextBox txtApellido;
-        private CheckBox checkBox1;
+        private CheckBox chkFichaMedica;
         private DateTimePicker dateTimePicker1;
-        private TextBox txtDni;
-        private TextBox txtTel;
+        private TextBox txtDNI;
+        private TextBox txtTelefono;
         private TextBox txtDireccion;
-        private Label label8;
-        private CheckBox checkBox2;
-        private Button button1;
-        private Button button2;
+        private Button btnIngresar;
+        private Button btnLimpiar;
         private Label label9;
         private Button button3;
     }
