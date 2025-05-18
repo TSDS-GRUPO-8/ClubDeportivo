@@ -34,7 +34,7 @@
             cmbFormaPago = new ComboBox();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
+            lblTotal = new Label();
             dateTimePicker2 = new DateTimePicker();
             label9 = new Label();
             btnLimpiar = new Button();
@@ -100,13 +100,14 @@
             label7.TabIndex = 9;
             label7.Text = "Forma de pago:";
             // 
-            // label8
+            // lblTotal
             // 
-            label8.Location = new Point(55, 77);
-            label8.Name = "label8";
-            label8.Size = new Size(50, 23);
-            label8.TabIndex = 11;
-            label8.Text = "Monto :";
+            lblTotal.Location = new Point(55, 77);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(50, 23);
+            lblTotal.TabIndex = 11;
+            lblTotal.Text = "TOTAL:";
+            lblTotal.Click += lblTotal_Click;
             // 
             // dateTimePicker2
             // 
@@ -121,13 +122,13 @@
             label9.Name = "label9";
             label9.Size = new Size(93, 23);
             label9.TabIndex = 14;
-            label9.Text = "Fecha de Cobro :";
+            label9.Text = "Fecha de Cobro:";
             label9.Click += label9_Click;
             // 
             // btnLimpiar
             // 
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLimpiar.Location = new Point(7, 193);
+            btnLimpiar.Location = new Point(50, 189);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(129, 38);
             btnLimpiar.TabIndex = 15;
@@ -138,7 +139,7 @@
             // btnPagar
             // 
             btnPagar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPagar.Location = new Point(155, 193);
+            btnPagar.Location = new Point(198, 189);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(129, 38);
             btnPagar.TabIndex = 16;
@@ -172,6 +173,7 @@
             // 
             // nudMonto
             // 
+            nudMonto.Enabled = false;
             nudMonto.Location = new Point(111, 75);
             nudMonto.Name = "nudMonto";
             nudMonto.Size = new Size(120, 23);
@@ -180,7 +182,7 @@
             // 
             // grpDatosPago
             // 
-            grpDatosPago.Controls.Add(label8);
+            grpDatosPago.Controls.Add(lblTotal);
             grpDatosPago.Controls.Add(nudMonto);
             grpDatosPago.Controls.Add(label7);
             grpDatosPago.Controls.Add(btnPagar);
@@ -226,7 +228,7 @@
         private ComboBox cmbFormaPago;
         private Label label6;
         private Label label7;
-        private Label label8;
+        private Label lblTotal;
         private DateTimePicker dateTimePicker2;
         private Label label9;
         private Button btnLimpiar;
