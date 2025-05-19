@@ -13,9 +13,11 @@ namespace ClubDeportivo
 {
     public partial class Inscripcion : Form
     {
-        public Inscripcion()
+        private FormPrincipal principal;
+        public Inscripcion(FormPrincipal formPrincipal)
         {
             InitializeComponent();
+            this.principal = formPrincipal;
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -26,6 +28,8 @@ namespace ClubDeportivo
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+            principal.AbrirEnPanel(new Home());
+
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

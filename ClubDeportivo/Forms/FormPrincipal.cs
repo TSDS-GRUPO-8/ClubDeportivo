@@ -10,10 +10,12 @@ namespace ClubDeportivo
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            panelNav.Visible = false;
+            panelNav.Visible = true;
             btnCerrarSesion.Visible = false;
             panelAdmin.Visible = true;
             panelAdmin.BringToFront();
+
+            AbrirEnPanel(new Home());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace ClubDeportivo
 
         }
 
-        private void AbrirEnPanel(Form formulario)
+        public void AbrirEnPanel(Form formulario)
         {
             panelContainer.Controls.Clear();
             formulario.TopLevel = false;
@@ -54,27 +56,28 @@ namespace ClubDeportivo
 
         private void btnInscri_Click(object sender, EventArgs e)
         {
-            AbrirEnPanel(new Inscripcion());
+            AbrirEnPanel(new Inscripcion(this));
         }
 
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirEnPanel(new Pago());
+            AbrirEnPanel(new Pago(this));
         }
 
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AbrirEnPanel(new Socio());
+            AbrirEnPanel(new Socio(this));
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             // Ocultar navegaci�n
-            panelNav.Visible = false;
+            panelNav.Visible = true;
             btnCerrarSesion.Visible = false;
+            AbrirEnPanel(new Home());
 
             // Mostrar panel de login
             panelAdmin.Visible = true;
@@ -92,7 +95,27 @@ namespace ClubDeportivo
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AbrirEnPanel(new ClubDeportivo.Forms.NoSocio());
+            AbrirEnPanel(new ClubDeportivo.Forms.NoSocio(this));
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,9 +14,11 @@ namespace ClubDeportivo.Forms
 {
     public partial class NoSocio : Form
     {
-        public NoSocio()
+        private FormPrincipal principal;
+        public NoSocio(FormPrincipal formPrincipal)
         {
             InitializeComponent();
+            this.principal = formPrincipal;
         }
 
         private void dgvNoSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -67,6 +69,7 @@ namespace ClubDeportivo.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            principal.AbrirEnPanel(new Home());
         }
     }
 }
