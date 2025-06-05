@@ -63,7 +63,6 @@ namespace ClubDeportivo.Clases
                 MessageBox.Show("Usuario registrado correctamente.");
             }
         }
-
         public void RegistrarActividad(Actividad nuevaActividad)
         {
             using (var con = ConexionMySQL.ObtenerConexion())
@@ -114,6 +113,59 @@ namespace ClubDeportivo.Clases
                 {
                     transaction.Rollback();
                     MessageBox.Show("Error al registrar actividad: " + ex.Message);
+                }
+            }
+        }
+        public void RegistrarProfesor(Profesor nuevoProfesor)
+        {
+            using (var con = ConexionMySQL.ObtenerConexion())
+            {
+                con.Open();
+                using (var transaction = con.BeginTransaction())
+                {
+                    try
+                    {
+                        // Verificar si ya existe el profesor con el mismo DNI
+                        string queryVerificar = "SELECT COUNT(*) FROM profesores WHERE dni = @dni";
+                        var cmdVerificar = new MySqlCommand(queryVerificar, con, transaction);
+                        cmdVerificar.Parameters.AddWithValue("@dni", nuevoProfesor.Dni);
+
+                        long existe = (long)cmdVerificar.ExecuteScalar();
+
+                        if (existe > 0)
+                        {
+                            MessageBox.Show("Este DNI ya está registrado como Profesor.");
+                            return;
+                        }
+
+                        // Insertar nuevo profesor
+                        string insert = @"
+                    INSERT INTO profesores 
+                    (nombre, apellido, dni, telefono, direccion, fecha_inscripcion, ficha_medica, activo, titulo) 
+                    VALUES 
+                    (@nombre, @apellido, @dni, @telefono, @direccion, @fechaInscripcion, @fichaMedica, @activo, @titulo)";
+
+                        var cmdInsert = new MySqlCommand(insert, con, transaction);
+                        cmdInsert.Parameters.AddWithValue("@nombre", nuevoProfesor.Nombre);
+                        cmdInsert.Parameters.AddWithValue("@apellido", nuevoProfesor.Apellido);
+                        cmdInsert.Parameters.AddWithValue("@dni", nuevoProfesor.Dni);
+                        cmdInsert.Parameters.AddWithValue("@telefono", nuevoProfesor.Telefono);
+                        cmdInsert.Parameters.AddWithValue("@direccion", nuevoProfesor.Direccion);
+                        cmdInsert.Parameters.AddWithValue("@fechaInscripcion", nuevoProfesor.FechaInscripcion);
+                        cmdInsert.Parameters.AddWithValue("@fichaMedica", nuevoProfesor.FichaMedica);
+                        cmdInsert.Parameters.AddWithValue("@activo", nuevoProfesor.Activo);
+                        cmdInsert.Parameters.AddWithValue("@titulo", nuevoProfesor.Titulo);
+
+                        cmdInsert.ExecuteNonQuery();
+
+                        transaction.Commit();
+                        MessageBox.Show("Profesor registrado correctamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Error al registrar profesor: " + ex.Message);
+                    }
                 }
             }
         }
@@ -208,9 +260,6 @@ namespace ClubDeportivo.Clases
                 return "No se encontró un socio ni un no socio con ese DNI.";
             }
         }
-
-
-
         public bool VerificarAcceso(string usuario, string contraseña)
         {
             string usuarioCorrecto = "admin";
