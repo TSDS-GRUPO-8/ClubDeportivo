@@ -11,34 +11,16 @@ namespace ClubDeportivo.Clases
         private static int contadorActividades = 1;
         public int IdActividad { get; set; }
         public string Nombre { get; set; }
-        public TimeSpan Horario { get; set; }
-        public List<string> Profesor { get; set; }
+        public List<DiaYHorario> Dias { get; set; }
+        public List<Profesor> Profesores { get; set; }  // Cuando implementes la clase Profesor
         public decimal Precio { get; set; }
-        public DateTime DiaYHora { get; set; }
 
-
-        public Actividad(string nombre, TimeSpan horario, List<string> profesor, decimal precio, DateTime diaYHora)
+        public Actividad(string nombre, List<DiaYHorario> dias, List<Profesor> profesores, decimal precio)
         {
-            IdActividad = contadorActividades++;
             Nombre = nombre;
-            Horario = horario;
-            Profesor = profesor ?? new List<string>(); // Si no pasan lista, creamos una vacía
+            Dias = dias;
+            Profesores = profesores;
             Precio = precio;
-            DiaYHora = diaYHora;
-        }
-        public void ListarActividad()
-        {
-            // Lógica para listar actividades
-        }
-
-        public void AltaActividad()
-        {
-            // Lógica para dar de alta una actividad
-        }
-
-        public void BajaActividad()
-        {
-            // Lógica para dar de baja una actividad
         }
     }
 }
