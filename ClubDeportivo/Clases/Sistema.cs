@@ -64,20 +64,57 @@ namespace ClubDeportivo.Clases
             }
         }
 
-        public void RegistrarActividad(string nombreActividad, TimeSpan horario, List<string> profesores, decimal precio, DateTime diaYHora)
+        public void RegistrarActividad(Actividad nuevaActividad)
         {
-            var actividadExistente = actividades.Find(a => a.Nombre.Equals(nombreActividad, StringComparison.OrdinalIgnoreCase));
-
-            if (actividadExistente == null)
+            using (var con = ConexionMySQL.ObtenerConexion())
             {
-                actividades.Add(new Actividad
-                (nombreActividad, horario, profesores, precio, diaYHora));
+                con.Open();
+                var transaction = con.BeginTransaction();
 
-                Console.WriteLine($"Actividad {nombreActividad} registrada correctamente.");
-            }
-            else
-            {
-                Console.WriteLine("La actividad ya existe.");
+                try
+                {
+                    // 1. Insertar en tabla actividades
+                    string insertActividad = "INSERT INTO actividades (nombre, precio) VALUES (@nombre, @precio);";
+                    var cmdActividad = new MySqlCommand(insertActividad, con, transaction);
+                    cmdActividad.Parameters.AddWithValue("@nombre", nuevaActividad.Nombre);
+                    cmdActividad.Parameters.AddWithValue("@precio", nuevaActividad.Precio);
+                    cmdActividad.ExecuteNonQuery();
+
+                    // Obtener el ID autogenerado
+                    long idActividad = cmdActividad.LastInsertedId;
+
+                    // 2. Insertar en tabla actividad_profesores
+                    foreach (var profesor in nuevaActividad.Profesores)
+                    {
+                        string insertRelacion = @"INSERT INTO actividad_profesores (id_actividad, dni_profesor) 
+                                          VALUES (@idActividad, @dniProfesor);";
+                        var cmdRelacion = new MySqlCommand(insertRelacion, con, transaction);
+                        cmdRelacion.Parameters.AddWithValue("@idActividad", idActividad);
+                        cmdRelacion.Parameters.AddWithValue("@dniProfesor", profesor.Dni);
+                        cmdRelacion.ExecuteNonQuery();
+                    }
+
+                    // 3. Insertar en tabla dias_horarios
+                    foreach (var diaHorario in nuevaActividad.Dias)
+                    {
+                        string insertDia = @"INSERT INTO dias_horarios (id_actividad, dia, hora_inicio, hora_fin) 
+                                     VALUES (@idActividad, @dia, @horaInicio, @horaFin);";
+                        var cmdDia = new MySqlCommand(insertDia, con, transaction);
+                        cmdDia.Parameters.AddWithValue("@idActividad", idActividad);
+                        cmdDia.Parameters.AddWithValue("@dia", diaHorario.Dia);
+                        cmdDia.Parameters.AddWithValue("@horaInicio", diaHorario.HoraInicio);
+                        cmdDia.Parameters.AddWithValue("@horaFin", diaHorario.HoraFin);
+                        cmdDia.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Actividad registrada correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error al registrar actividad: " + ex.Message);
+                }
             }
         }
         public string PagarCuota(string dni, decimal monto, string formaPago)
