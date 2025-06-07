@@ -198,7 +198,7 @@
             button3.BackColor = Color.FromArgb(255, 128, 128);
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(614, -22);
+            button3.Location = new Point(646, 16);
             button3.Name = "button3";
             button3.Size = new Size(28, 28);
             button3.TabIndex = 19;
@@ -211,7 +211,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(635, 301);
+            ClientSize = new Size(698, 377);
             Controls.Add(button3);
             Controls.Add(label9);
             Controls.Add(btnLimpiar);

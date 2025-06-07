@@ -14,15 +14,18 @@ namespace ClubDeportivo
 {
     public partial class Socio : Form
     {
-        public Socio()
+        private FormPrincipal principal;
+        public Socio(FormPrincipal formPrincipal)
         {
             InitializeComponent();
             this.Load += Socio_Load;
+            this.principal = formPrincipal;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+             Close();
+             principal.AbrirEnPanel(new Home());
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

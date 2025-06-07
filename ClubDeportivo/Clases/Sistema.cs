@@ -63,21 +63,110 @@ namespace ClubDeportivo.Clases
                 MessageBox.Show("Usuario registrado correctamente.");
             }
         }
-
-        public void RegistrarActividad(string nombreActividad, TimeSpan horario, List<string> profesores, decimal precio, DateTime diaYHora)
+        public void RegistrarActividad(Actividad nuevaActividad)
         {
-            var actividadExistente = actividades.Find(a => a.Nombre.Equals(nombreActividad, StringComparison.OrdinalIgnoreCase));
-
-            if (actividadExistente == null)
+            using (var con = ConexionMySQL.ObtenerConexion())
             {
-                actividades.Add(new Actividad
-                (nombreActividad, horario, profesores, precio, diaYHora));
+                con.Open();
+                var transaction = con.BeginTransaction();
 
-                Console.WriteLine($"Actividad {nombreActividad} registrada correctamente.");
+                try
+                {
+                    // 1. Insertar en tabla actividades
+                    string insertActividad = "INSERT INTO actividades (nombre, precio) VALUES (@nombre, @precio);";
+                    var cmdActividad = new MySqlCommand(insertActividad, con, transaction);
+                    cmdActividad.Parameters.AddWithValue("@nombre", nuevaActividad.Nombre);
+                    cmdActividad.Parameters.AddWithValue("@precio", nuevaActividad.Precio);
+                    cmdActividad.ExecuteNonQuery();
+
+                    // Obtener el ID autogenerado
+                    long idActividad = cmdActividad.LastInsertedId;
+
+                    // 2. Insertar en tabla actividad_profesores
+                    foreach (var profesor in nuevaActividad.Profesores)
+                    {
+                        string insertRelacion = @"INSERT INTO actividad_profesores (id_actividad, dni_profesor) 
+                                          VALUES (@idActividad, @dniProfesor);";
+                        var cmdRelacion = new MySqlCommand(insertRelacion, con, transaction);
+                        cmdRelacion.Parameters.AddWithValue("@idActividad", idActividad);
+                        cmdRelacion.Parameters.AddWithValue("@dniProfesor", profesor.Dni);
+                        cmdRelacion.ExecuteNonQuery();
+                    }
+
+                    // 3. Insertar en tabla dias_horarios
+                    foreach (var diaHorario in nuevaActividad.Dias)
+                    {
+                        string insertDia = @"INSERT INTO dias_horarios (id_actividad, dia, hora_inicio, hora_fin) 
+                                     VALUES (@idActividad, @dia, @horaInicio, @horaFin);";
+                        var cmdDia = new MySqlCommand(insertDia, con, transaction);
+                        cmdDia.Parameters.AddWithValue("@idActividad", idActividad);
+                        cmdDia.Parameters.AddWithValue("@dia", diaHorario.Dia);
+                        cmdDia.Parameters.AddWithValue("@horaInicio", diaHorario.HoraInicio);
+                        cmdDia.Parameters.AddWithValue("@horaFin", diaHorario.HoraFin);
+                        cmdDia.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Actividad registrada correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error al registrar actividad: " + ex.Message);
+                }
             }
-            else
+        }
+        public void RegistrarProfesor(Profesor nuevoProfesor)
+        {
+            using (var con = ConexionMySQL.ObtenerConexion())
             {
-                Console.WriteLine("La actividad ya existe.");
+                con.Open();
+                using (var transaction = con.BeginTransaction())
+                {
+                    try
+                    {
+                        // Verificar si ya existe el profesor con el mismo DNI
+                        string queryVerificar = "SELECT COUNT(*) FROM profesores WHERE dni = @dni";
+                        var cmdVerificar = new MySqlCommand(queryVerificar, con, transaction);
+                        cmdVerificar.Parameters.AddWithValue("@dni", nuevoProfesor.Dni);
+
+                        long existe = (long)cmdVerificar.ExecuteScalar();
+
+                        if (existe > 0)
+                        {
+                            MessageBox.Show("Este DNI ya está registrado como Profesor.");
+                            return;
+                        }
+
+                        // Insertar nuevo profesor
+                        string insert = @"
+                    INSERT INTO profesores 
+                    (nombre, apellido, dni, telefono, direccion, fecha_inscripcion, ficha_medica, activo, titulo) 
+                    VALUES 
+                    (@nombre, @apellido, @dni, @telefono, @direccion, @fechaInscripcion, @fichaMedica, @activo, @titulo)";
+
+                        var cmdInsert = new MySqlCommand(insert, con, transaction);
+                        cmdInsert.Parameters.AddWithValue("@nombre", nuevoProfesor.Nombre);
+                        cmdInsert.Parameters.AddWithValue("@apellido", nuevoProfesor.Apellido);
+                        cmdInsert.Parameters.AddWithValue("@dni", nuevoProfesor.Dni);
+                        cmdInsert.Parameters.AddWithValue("@telefono", nuevoProfesor.Telefono);
+                        cmdInsert.Parameters.AddWithValue("@direccion", nuevoProfesor.Direccion);
+                        cmdInsert.Parameters.AddWithValue("@fechaInscripcion", nuevoProfesor.FechaInscripcion);
+                        cmdInsert.Parameters.AddWithValue("@fichaMedica", nuevoProfesor.FichaMedica);
+                        cmdInsert.Parameters.AddWithValue("@activo", nuevoProfesor.Activo);
+                        cmdInsert.Parameters.AddWithValue("@titulo", nuevoProfesor.Titulo);
+
+                        cmdInsert.ExecuteNonQuery();
+
+                        transaction.Commit();
+                        MessageBox.Show("Profesor registrado correctamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Error al registrar profesor: " + ex.Message);
+                    }
+                }
             }
         }
         public string PagarCuota(string dni, decimal monto, string formaPago)
@@ -171,9 +260,6 @@ namespace ClubDeportivo.Clases
                 return "No se encontró un socio ni un no socio con ese DNI.";
             }
         }
-
-
-
         public bool VerificarAcceso(string usuario, string contraseña)
         {
             string usuarioCorrecto = "admin";

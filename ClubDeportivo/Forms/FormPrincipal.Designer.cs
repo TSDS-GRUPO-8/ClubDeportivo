@@ -29,25 +29,23 @@
         private void InitializeComponent()
         {
             panelNav = new Panel();
+            panelAdmin = new Panel();
+            label1 = new Label();
+            label3 = new Label();
+            txtContrasena = new TextBox();
+            txtUsuario = new TextBox();
+            button1 = new Button();
             button6 = new Button();
             button5 = new Button();
             button4 = new Button();
-            panel1 = new Panel();
-            label1 = new Label();
             button3 = new Button();
             button2 = new Button();
             btnInscri = new Button();
             btnCerrarSesion = new Button();
-            panelAdmin = new Panel();
-            txtContrasena = new TextBox();
-            txtUsuario = new TextBox();
-            button1 = new Button();
-            CONTRASEÑA = new Label();
-            USUARIO = new Label();
+            label4 = new Label();
             panelContainer = new Panel();
             label2 = new Label();
             panelNav.SuspendLayout();
-            panel1.SuspendLayout();
             panelAdmin.SuspendLayout();
             panelContainer.SuspendLayout();
             SuspendLayout();
@@ -55,20 +53,88 @@
             // panelNav
             // 
             panelNav.BackColor = Color.Black;
+            panelNav.Controls.Add(panelAdmin);
             panelNav.Controls.Add(button6);
             panelNav.Controls.Add(button5);
             panelNav.Controls.Add(button4);
-            panelNav.Controls.Add(panel1);
             panelNav.Controls.Add(button3);
             panelNav.Controls.Add(button2);
             panelNav.Controls.Add(btnInscri);
             panelNav.Controls.Add(btnCerrarSesion);
+            panelNav.Controls.Add(label4);
             panelNav.Dock = DockStyle.Left;
             panelNav.Location = new Point(0, 0);
             panelNav.Margin = new Padding(2, 1, 2, 1);
             panelNav.Name = "panelNav";
             panelNav.Size = new Size(215, 527);
             panelNav.TabIndex = 0;
+            // 
+            // panelAdmin
+            // 
+            panelAdmin.BackColor = Color.CornflowerBlue;
+            panelAdmin.Controls.Add(label1);
+            panelAdmin.Controls.Add(label3);
+            panelAdmin.Controls.Add(txtContrasena);
+            panelAdmin.Controls.Add(txtUsuario);
+            panelAdmin.Controls.Add(button1);
+            panelAdmin.Dock = DockStyle.Fill;
+            panelAdmin.Location = new Point(0, 0);
+            panelAdmin.Margin = new Padding(2, 1, 2, 1);
+            panelAdmin.Name = "panelAdmin";
+            panelAdmin.Size = new Size(215, 527);
+            panelAdmin.TabIndex = 7;
+            panelAdmin.Paint += panelAdmin_Paint;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(27, 249);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 24);
+            label1.TabIndex = 11;
+            label1.Text = "CONTRASEÑA";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(27, 178);
+            label3.Name = "label3";
+            label3.Size = new Size(155, 24);
+            label3.TabIndex = 10;
+            label3.Text = "USUARIO";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Click += label3_Click;
+            // 
+            // txtContrasena
+            // 
+            txtContrasena.BorderStyle = BorderStyle.FixedSingle;
+            txtContrasena.Location = new Point(27, 284);
+            txtContrasena.Margin = new Padding(2, 1, 2, 1);
+            txtContrasena.Name = "txtContrasena";
+            txtContrasena.Size = new Size(155, 23);
+            txtContrasena.TabIndex = 9;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuario.Location = new Point(27, 219);
+            txtUsuario.Margin = new Padding(2, 1, 2, 1);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(155, 23);
+            txtUsuario.TabIndex = 8;
+            txtUsuario.TextChanged += textBox2_TextChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(27, 351);
+            button1.Margin = new Padding(2, 1, 2, 1);
+            button1.Name = "button1";
+            button1.Size = new Size(155, 33);
+            button1.TabIndex = 7;
+            button1.Text = "INGRESAR";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button6
             // 
@@ -117,27 +183,6 @@
             button4.Text = "SOCIOS";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Black;
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(215, 147);
-            panel1.TabIndex = 12;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Showcard Gothic", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(0, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(215, 53);
-            label1.TabIndex = 0;
-            label1.Text = "CLUB DEPORTIVO";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button3
             // 
@@ -200,75 +245,20 @@
             btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
-            // panelAdmin
+            // label4
             // 
-            panelAdmin.BackColor = Color.Blue;
-            panelAdmin.Controls.Add(txtContrasena);
-            panelAdmin.Controls.Add(txtUsuario);
-            panelAdmin.Controls.Add(button1);
-            panelAdmin.Controls.Add(CONTRASEÑA);
-            panelAdmin.Controls.Add(USUARIO);
-            panelAdmin.Dock = DockStyle.Fill;
-            panelAdmin.Location = new Point(0, 0);
-            panelAdmin.Margin = new Padding(2, 1, 2, 1);
-            panelAdmin.Name = "panelAdmin";
-            panelAdmin.Size = new Size(897, 527);
-            panelAdmin.TabIndex = 7;
-            panelAdmin.Paint += panelAdmin_Paint;
-            // 
-            // txtContrasena
-            // 
-            txtContrasena.Location = new Point(419, 256);
-            txtContrasena.Margin = new Padding(2, 1, 2, 1);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.Size = new Size(110, 23);
-            txtContrasena.TabIndex = 4;
-            // 
-            // txtUsuario
-            // 
-            txtUsuario.Location = new Point(419, 156);
-            txtUsuario.Margin = new Padding(2, 1, 2, 1);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(110, 23);
-            txtUsuario.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(436, 362);
-            button1.Margin = new Padding(2, 1, 2, 1);
-            button1.Name = "button1";
-            button1.Size = new Size(81, 22);
-            button1.TabIndex = 2;
-            button1.Text = "INGRESAR";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // CONTRASEÑA
-            // 
-            CONTRASEÑA.AutoSize = true;
-            CONTRASEÑA.Font = new Font("Segoe UI Black", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CONTRASEÑA.Location = new Point(369, 200);
-            CONTRASEÑA.Margin = new Padding(2, 0, 2, 0);
-            CONTRASEÑA.Name = "CONTRASEÑA";
-            CONTRASEÑA.Size = new Size(204, 37);
-            CONTRASEÑA.TabIndex = 1;
-            CONTRASEÑA.Text = "CONTRASEÑA";
-            // 
-            // USUARIO
-            // 
-            USUARIO.AutoSize = true;
-            USUARIO.Font = new Font("Segoe UI Black", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            USUARIO.Location = new Point(401, 101);
-            USUARIO.Margin = new Padding(2, 0, 2, 0);
-            USUARIO.Name = "USUARIO";
-            USUARIO.Size = new Size(140, 37);
-            USUARIO.TabIndex = 0;
-            USUARIO.Text = "USUARIO";
+            label4.Font = new Font("Showcard Gothic", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaption;
+            label4.Location = new Point(12, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(193, 132);
+            label4.TabIndex = 9;
+            label4.Text = "CLUB DEPORTIVO";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelContainer
             // 
             panelContainer.BackColor = Color.Black;
-            panelContainer.Controls.Add(panelAdmin);
             panelContainer.Controls.Add(label2);
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(215, 0);
@@ -276,17 +266,19 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(897, 527);
             panelContainer.TabIndex = 1;
+            panelContainer.Paint += panelContainer_Paint;
             // 
             // label2
             // 
             label2.Font = new Font("Showcard Gothic", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(155, 151);
+            label2.Location = new Point(240, 196);
             label2.Name = "label2";
             label2.Size = new Size(435, 133);
             label2.TabIndex = 8;
             label2.Text = "CLUB DEPORTIVO";
             label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Click += label2_Click;
             // 
             // FormPrincipal
             // 
@@ -300,7 +292,6 @@
             Text = "Form1";
             Load += Form1_Load;
             panelNav.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             panelAdmin.ResumeLayout(false);
             panelAdmin.PerformLayout();
             panelContainer.ResumeLayout(false);
@@ -311,20 +302,19 @@
         private Panel panelAdmin;
         private Panel panelNav;
         private Panel panelContainer;
-        private Label USUARIO;
-        private Label CONTRASEÑA;
-        private TextBox txtContrasena;
-        private TextBox txtUsuario;
-        private Button button1;
         private Button btnCerrarSesion;
         private Button btnInscri;
         private Button button3;
         private Button button2;
-        private Panel panel1;
-        private Label label1;
         private Button button5;
         private Button button4;
         private Button button6;
         private Label label2;
+        private Label label1;
+        private Label label3;
+        private TextBox txtContrasena;
+        private TextBox txtUsuario;
+        private Button button1;
+        private Label label4;
     }
 }

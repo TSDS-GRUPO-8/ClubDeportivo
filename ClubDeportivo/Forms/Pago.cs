@@ -15,9 +15,11 @@ namespace ClubDeportivo
 {
     public partial class Pago : Form
     {
-        public Pago()
+        private FormPrincipal principal;
+        public Pago(FormPrincipal formPrincipal)
         {
             InitializeComponent();
+            this.principal = formPrincipal;
             cmbFormaPago.SelectedIndex = 0;
             nudMonto.Minimum = 10000;
             nudMonto.Maximum = 100000;
@@ -32,6 +34,7 @@ namespace ClubDeportivo
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+            principal.AbrirEnPanel(new Home());
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
